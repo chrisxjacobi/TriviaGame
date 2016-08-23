@@ -14,6 +14,10 @@
 
 */
 
+var questionsTotal = 10;
+var questionsCorrect = [];
+var questionsWrong = [];
+
 
 var questionOne = {
     question: "Who is the frontman for Emperor?",
@@ -52,28 +56,28 @@ var questionSix = {
 };
 
 var questionSeven = {
-	question: "Which French band has managed to keep their personal identities private for over almost 20 years?",
-	answer: ["Cilice", "Gojira", "Celeste", "Deathspell Omega"],
-	correctAnswer: 3,
+    question: "Which French band has managed to keep their personal identities private for over almost 20 years?",
+    answer: ["Cilice", "Gojira", "Celeste", "Deathspell Omega"],
+    correctAnswer: 3,
 };
 
 var questionEight = {
-	question: "Which band coined the term 'Black Metal' with the title of their 1982 classic album?",
-	answer: ["Venom", "Ascension", "Dispirit", "Weakling"],
-	correctAnswer: 0,
+    question: "Which band coined the term 'Black Metal' with the title of their 1982 classic album?",
+    answer: ["Venom", "Ascension", "Dispirit", "Weakling"],
+    correctAnswer: 0,
 };
 
 var questionNine = {
-	question: "Legendary act Bathory was named after noblewoman Countess Elisabeth Bathory of which Eastern European country?",
-	answer: ["Moldova", "Poland", "Slovakia", "Hungary"],
-	correctAnswer: 3,
+    question: "Legendary act Bathory was named after noblewoman Countess Elisabeth Bathory of which Eastern European country?",
+    answer: ["Moldova", "Poland", "Slovakia", "Hungary"],
+    correctAnswer: 3,
 };
 
 var questionTen = {
-	question: "Immortal has based their lyrical content on the events of what fictitious world?",
-	answer: ["Isa", "Blashyrkh", "Von", "Divinus"],
-	correctAnswer: 1,
-}
+    question: "Immortal has based their lyrical content on the events of what fictitious world?",
+    answer: ["Isa", "Blashyrkh", "Von", "Divinus"],
+    correctAnswer: 1,
+} 
 
 
 
@@ -83,18 +87,19 @@ $(document).ready(function() {
         $(".startWindow").addClass("invisible");
         $(".questionArea").removeClass("invisible");
         //start countdown timer
-        $('.questionArea').html(questionThree.question);
-        //build content of form in jQuery (input type = "radio"...)
-    });
+        $('.questionArea').html(questionOne.question);
+        //$('.questionArea').append('<div>hello world</div>');
+
+        //HOW DO I ADD ALL QUESTIONS TO THE PAGE??
+        //HOW DO I: build content of form in jQuery (input type = "radio"...)??
+        //HOW DO I: add submit button??
 
 
+    })
 
-
-
-
-    function displayQuestion() {
+   /* function displayQuestion() {
         for (i = 0; i < question.length; i++) {
-            console.log(questions[i].question);
+            console.log(questionOne.question);
         }
-    }
+    } */
 });
