@@ -15,8 +15,8 @@
 */
 
 var questionsTotal = 10;
-var questionsCorrect = [];
-var questionsWrong = [];
+var questionsCorrect = 0;
+var questionsWrong = 0;
 
 
 var questionOne = {
@@ -78,6 +78,38 @@ var questionTen = {
     answer: ["Isa", "Blashyrkh", "Von", "Divinus"],
     correctAnswer: 1,
 } 
+
+var questions = [
+	questionOne,
+	questionTwo,
+	questionThree,
+	questionFour,
+	questionFive,
+	questionSix,
+	questionSeven,
+	questionEight,
+	questionNine,
+	questionTen
+];
+
+for (var i = 0; i < questions.length; i++) {
+	// <div class="question">
+	//   <div class="question-text"></div>
+	//   <div class="options"></div>
+	var questionEl = $('<div class="question">');
+	var questionText = $('<div class="question-text">');
+	questionText.html(questions[i].question);
+	questionEl.append(questionText);
+	var answerGroup = $('<form class="answers">');
+	questionEl.append(answerGroup);
+
+	for (var j = 0; j < questions[i].answer.length; j++) {
+		var answerEl = $('<div class="answer"><input name="' + questions[i].answer[j] + '" type="radio">' + questions[i].answer[j] + '</div>');
+		answerGroup.append(answerEl);
+	}
+
+	$('.questionArea').append(questionEl);
+}
 
 
 
