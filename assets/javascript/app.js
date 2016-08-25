@@ -3,16 +3,13 @@
 -gather questions/answers (data)
 -build architecture of questions/answers (radio buttons)
 -establish variables of 
-	~questions, questionsTotal, correctAnswer, incorrectAnswer, correct/incorrect counters
+    ~questions, questionsTotal, correctAnswer, incorrectAnswer, correct/incorrect counters
 -questions vs correctAnswer = win; correctAnswer < questions = loss
 -setTimer for page
 
 -create questionArray with all Questions
 -create answerArray with all Answers
--create correctAnswerArray with the correct answers
-
-
-*/
+-create correctAnswerArray with the correct answers */
 
 var questionsTotal = 10;
 var questionsCorrect = 0;
@@ -77,61 +74,67 @@ var questionTen = {
     question: "Immortal has based their lyrical content on the events of what fictitious world?",
     answer: ["Isa", "Blashyrkh", "Von", "Divinus"],
     correctAnswer: 1,
-} 
-
-var questions = [
-	questionOne,
-	questionTwo,
-	questionThree,
-	questionFour,
-	questionFive,
-	questionSix,
-	questionSeven,
-	questionEight,
-	questionNine,
-	questionTen
-];
-
-for (var i = 0; i < questions.length; i++) {
-	// <div class="question">
-	//   <div class="question-text"></div>
-	//   <div class="options"></div>
-	var questionEl = $('<div class="question">');
-	var questionText = $('<div class="question-text">');
-	questionText.html(questions[i].question);
-	questionEl.append(questionText);
-	var answerGroup = $('<form class="answers">');
-	questionEl.append(answerGroup);
-
-	for (var j = 0; j < questions[i].answer.length; j++) {
-		var answerEl = $('<div class="answer"><input name="' + questions[i].answer[j] + '" type="radio">' + questions[i].answer[j] + '</div>');
-		answerGroup.append(answerEl);
-	}
-
-	$('.questionArea').append(questionEl);
 }
 
-
+var questions = [
+    questionOne,
+    questionTwo,
+    questionThree,
+    questionFour,
+    questionFive,
+    questionSix,
+    questionSeven,
+    questionEight,
+    questionNine,
+    questionTen,
+];
 
 $(document).ready(function() {
 
-    $(".startButton").on("click", function() {
-        $(".startWindow").addClass("invisible");
-        $(".questionArea").removeClass("invisible");
+    $('.startButton').on('click', function() {
+        $('.startWindow').addClass('invisible');
+        $('.questionArea').removeClass('invisible');
         //start countdown timer
-        $('.questionArea').html(questionOne.question);
-        //$('.questionArea').append('<div>hello world</div>');
+        for (var i = 0; i < questions.length; i++) {
+            // <div class="question">
+            //   <div class="question-text"></div>
+            //   <div class="options"></div>
+            var questionEl = $('<div class="question">');
+            var questionText = $('<div class="question-text">');
+            questionText.html(questions[i].question);
+            questionEl.append(questionText);
+            var answerGroup = $('<form class="answers">');
+            questionEl.append(answerGroup);
 
-        //HOW DO I ADD ALL QUESTIONS TO THE PAGE??
-        //HOW DO I: build content of form in jQuery (input type = "radio"...)??
-        //HOW DO I: add submit button??
+            for (var j = 0; j < questions[i].answer.length; j++) {
+                var answerEl = $('<div class="answer"><input type="radio'  + '" name="radio">' + questions[i].answer[j] + '</div>');
+                answerGroup.append(answerEl);
+            }
 
+            $('.questionArea').append(questionEl);
+        }
+        $('questionArea').append('<button</> class="submit"')
 
     })
 
-   /* function displayQuestion() {
-        for (i = 0; i < question.length; i++) {
-            console.log(questionOne.question);
-        }
-    } */
+    $('submitButton').on('click', function() {
+
+    });
+
+
+
+
+
+    //  $('.questionArea').html(questionOne.question);
+    // $('.questionArea').append('<div>hello world</div>');
+
+    //HOW DO I ADD ALL QUESTIONS TO THE PAGE??
+    //HOW DO I: build content of form in jQuery (input type = "radio"...)??
+    //HOW DO I: add submit button??
+
+    /* function displayQuestion() {
+         for (i = 0; i < questions.length; i++) {
+             
+         }
+     } */
 });
