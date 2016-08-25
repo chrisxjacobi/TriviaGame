@@ -10,10 +10,25 @@
 -create questionArray with all Questions
 -create answerArray with all Answers
 -create correctAnswerArray with the correct answers */
+var game = {
+    correct: 0,
+    incorrect: 0,
+    counter: 90,
 
-var questionsTotal = 10;
-var questionsCorrect = 0;
-var questionsWrong = 0;
+    clock: function() {
+        game.counter--;
+        $('#counter').html(game.counter);
+
+        if (game.counter === 0) {
+            alert("Game over!");
+            game.done();
+        }
+    },
+    start: function() {
+        game.start;
+    }
+
+}
 
 
 var questionOne = {
@@ -94,36 +109,52 @@ $(document).ready(function() {
     $('.startButton').on('click', function() {
         $('.startWindow').addClass('invisible');
         $('.questionArea').removeClass('invisible');
-        //start countdown timer
+        game.start();
+        timer = setInterval(game.clock, 1000)
+        $('.questionArea').prepend("Time remaining: <span id='counter'>90</span> Seconds");
         for (var i = 0; i < questions.length; i++) {
             // <div class="question">
             //   <div class="question-text"></div>
             //   <div class="options"></div>
-            var questionEl = $('<div class="question">');
+            var showQuestion = $('<div class="question">');
             var questionText = $('<div class="question-text">');
             questionText.html(questions[i].question);
-            questionEl.append(questionText);
+            showQuestion.append(questionText);
+
             var answerGroup = $('<form class="answers">');
-            questionEl.append(answerGroup);
+            showQuestion.append(answerGroup);
 
             for (var j = 0; j < questions[i].answer.length; j++) {
-                var answerEl = $('<div class="answer"><input type="radio'  + '" name="radio">' + questions[i].answer[j] + '</div>');
-                answerGroup.append(answerEl);
+                var showAnswer = $('<div class="answer"><input type="radio' + '" name="radio">' + questions[i].answer[j] + '</div>');
+                answerGroup.append(showAnswer);
             }
 
-            $('.questionArea').append(questionEl);
+            $('.questionArea').append(showQuestion);
         }
         $('questionArea').append('<button</> class="submit"')
 
-    })
-
-    $('submitButton').on('click', function() {
+      /*  result: function() {
+            clearInterval(timer);
+            $('.questionArea').remove();
+            $('.questionArea').html("Finished!")
+            $('.questionArea').append("Correct Answers: " + this.correct);
+            $('.questionArea').append("Incorrect Answers: " + this.incorrect);
+        }; */
 
     });
 
 
 
 
+    /*  done: function() {
+          $.each($'input[name="questionOne":checked');
+          if ($(this).val()===questionOne.correctAnswer) {
+              game.correct++;
+          } else {
+              game.incorrect++;
+          };
+
+      }; */
 
     //  $('.questionArea').html(questionOne.question);
     // $('.questionArea').append('<div>hello world</div>');
