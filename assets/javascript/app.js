@@ -27,65 +27,65 @@ var game = {
         game.start;
     },
 }
-  
+
 
 
 var questionOne = {
-    question: "1. Who is the frontman for Emperor?",
+    question: "I: Who is the frontman for Emperor?",
     answer: ["Ihsahn", "Necrobutcher", "Gaahl", "Nocturno Culto"],
     correctAnswer: 0,
 };
 
 var questionTwo = {
-    question: "2. What band released the classic album 'Filosofem'?",
+    question: "II: Which artist released the classic album 'Filosofem'?",
     answer: ["Mayhem", "Dark Fortress", "Burzum", "Venom"],
     correctAnswer: 2,
 };
 
 var questionThree = {
-    question: "3. Celtic Frost rose from the ashes of what band?",
+    question: "III: Celtic Frost rose from the ashes of what band?",
     answer: ["Mortuary Drape", "Hellhammer", "Goblin", "Darkthrone"],
     correctAnswer: 1,
 };
 
 var questionFour = {
-    question: "4. What band released the 2013 genre-defying 'Sunbather'?",
+    question: "IV: Which act released the 2013 genre-defying 'Sunbather'?",
     answer: ["Woe", "Marduk", "Deafheaven", "Enslaved"],
     correctAnswer: 2,
 };
 
 var questionFive = {
-    question: "5. Complete the band name: _____ In The Throne Room",
+    question: "V: Complete the band name: _____ In The Throne Room",
     answer: ["Drapes", "Goats", "Wolves", "Dreams"],
     correctAnswer: 2,
 };
 
 var questionSix = {
-    question: "6. Which of the following is NOT an album by Watain?",
+    question: "VI: Which of the following is NOT an album by Watain?",
     answer: ["Lawless Darkness", "Evangelion", "The Wild Hunt", "Sworn to the Dark"],
     correctAnswer: 1,
 };
 
 var questionSeven = {
-    question: "7. Which French band has managed to keep their personal identities private for almost 20 years?",
+    question: "VII: Which French collective has managed to keep their personal identities private for almost 20 years?",
     answer: ["Cilice", "Gojira", "Celeste", "Deathspell Omega"],
     correctAnswer: 3,
 };
 
 var questionEight = {
-    question: "8. Which band coined the term 'Black Metal' with the title of their 1982 classic album?",
+    question: "VIII: Which band coined the term 'Black Metal' with the title of their 1982 classic album?",
     answer: ["Venom", "Ascension", "Dispirit", "Weakling"],
     correctAnswer: 0,
 };
 
 var questionNine = {
-    question: "9. Legendary act Bathory was named after noblewoman Countess Elisabeth Bathory of which Eastern European country?",
+    question: "IX: Legendary act Bathory was named after noblewoman Countess Elisabeth Bathory of which Eastern European country?",
     answer: ["Moldova", "Poland", "Slovakia", "Hungary"],
     correctAnswer: 3,
 };
 
 var questionTen = {
-    question: "10. Immortal has based their lyrical content on the events of what fictitious world?",
+    question: "X: Immortal has based their lyrical content on the events of what fictitious world?",
     answer: ["Isa", "Blashyrkh", "Von", "Divinus"],
     correctAnswer: 1,
 }
@@ -108,6 +108,7 @@ $(document).ready(function() {
     $('.startButton').on('click', function() {
         $('.startWindow').addClass('invisible');
         $('.questionArea').removeClass('invisible');
+       // $('.finalgif').addClass('invisible');
 
         var submitButton = $('<button>');
         submitButton.addClass('submit');
@@ -120,14 +121,14 @@ $(document).ready(function() {
             $('.music').remove();
             $('#counter').remove();
             clearInterval(timer);
-            $('.scoring').append('Correct Answers: ' +
-            + 'Incorrect answers: ');
 
-        var scoreArea = $('<div>');
-        scoreArea.addClass('scoring');
-        scoreArea.text("You guessed " + game.correct + "correct and " + game.incorrect + "wrong!");
-        $('.wrapper').append(scoreArea);
-        
+            var scoreArea = $('<div>');
+            scoreArea.addClass('scoring');
+            scoreArea.text("You guessed " + game.correct + " correct and " + game.incorrect + " wrong!");
+            $('.wrapper').append(scoreArea)
+            $('.finalgif').show();
+
+
         });
 
         //game.start();
