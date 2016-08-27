@@ -123,6 +123,16 @@ $(document).ready(function() {
             clearInterval(timer);
 
 
+            function checkAnswer() {
+              $('.input').each(function() {
+                if ($(this).attr('data-correct') === true ) {
+                console.log("yes");
+                } else {
+                  console.log('no');
+                }                 
+              });
+            };
+
             var scoreArea = $('<div>');
             scoreArea.addClass('scoring');
             scoreArea.text("You guessed " + game.correct + " correct and " + game.incorrect + " wrong!");
@@ -135,9 +145,9 @@ $(document).ready(function() {
             refreshButton.text('Play Again!');
             $('.wrapper').append(refreshButton);
 
-        $('.refresh').click(function() {
-            location.reload();
-        })
+            $('.refresh').click(function() {
+                location.reload();
+            })
 
         });
 
@@ -156,18 +166,15 @@ $(document).ready(function() {
 
 
             for (var j = 0; j < questions[i].answer.length; j++) {
-                var showAnswer = $('<div class="answer"><input type="radio' + '" name="radio">' + questions[i].answer[j] + '</div>');
+                var showAnswer = $('<div class="answer"></div>');
+                var input = $('<input type="radio" name="radio" class="input">');
+                input.attr('data-correct', questions[i].correctAnswer === j);
+                showAnswer.append(input);
+                showAnswer.append(questions[i].answer[j]);
                 answerGroup.append(showAnswer);
             }
 
-            function checkAnswer() {
-                if (questionOne.correctAnswer.checked === true) {
-                    console.log("right");
-                } else {
-                    console.log("wrong")
-                    }
-              
-            };
+
 
             $('.questionArea').append(showQuestion);
 
