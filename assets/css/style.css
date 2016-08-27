@@ -6,10 +6,17 @@
 
 }
 
-.submit, .startButton {
+.submit, .startButton, .refresh {
 	height: 60px;
 	width: 60px;
 	margin-left: 375px;
+}
+
+.refresh {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 410px;
+
 }
 
 .first {

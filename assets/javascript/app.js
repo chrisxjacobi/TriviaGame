@@ -108,7 +108,7 @@ $(document).ready(function() {
     $('.startButton').on('click', function() {
         $('.startWindow').addClass('invisible');
         $('.questionArea').removeClass('invisible');
-       // $('.finalgif').addClass('invisible');
+        // $('.finalgif').addClass('invisible');
 
         var submitButton = $('<button>');
         submitButton.addClass('submit');
@@ -122,12 +122,22 @@ $(document).ready(function() {
             $('#counter').remove();
             clearInterval(timer);
 
+
             var scoreArea = $('<div>');
             scoreArea.addClass('scoring');
             scoreArea.text("You guessed " + game.correct + " correct and " + game.incorrect + " wrong!");
             $('.wrapper').append(scoreArea)
             $('.finalgif').show();
+            checkAnswer();
 
+            var refreshButton = $('<button>');
+            refreshButton.addClass('refresh');
+            refreshButton.text('Play Again!');
+            $('.wrapper').append(refreshButton);
+
+        $('.refresh').click(function() {
+            location.reload();
+        })
 
         });
 
@@ -149,6 +159,15 @@ $(document).ready(function() {
                 var showAnswer = $('<div class="answer"><input type="radio' + '" name="radio">' + questions[i].answer[j] + '</div>');
                 answerGroup.append(showAnswer);
             }
+
+            function checkAnswer() {
+                if (questionOne.correctAnswer.checked === true) {
+                    console.log("right");
+                } else {
+                    console.log("wrong")
+                    }
+              
+            };
 
             $('.questionArea').append(showQuestion);
 
