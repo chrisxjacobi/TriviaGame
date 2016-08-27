@@ -12,7 +12,7 @@
 var game = {
     correct: 0,
     incorrect: 0,
-    counter: 90,
+    counter: 150,
 
     clock: function() {
         game.counter--;
@@ -27,8 +27,6 @@ var game = {
         game.start;
     },
 }
-
-
 
 var questionOne = {
     question: "I: Who is the frontman for Emperor?",
@@ -116,7 +114,7 @@ $(document).ready(function() {
         $('.wrapper').append(submitButton);
 
         $('.submit').on('click', function() {
-            $('.questionArea').remove();
+            $('.questionArea').hide();
             submitButton.remove();
             $('.music').remove();
             $('#counter').remove();
@@ -124,21 +122,22 @@ $(document).ready(function() {
 
 
             function checkAnswer() {
-              $('.input').each(function() {
-                if ($(this).attr('data-correct') === true ) {
-                console.log("yes");
-                } else {
-                  console.log('no');
-                }                 
-              });
+                console.log('hello');
+                $('.input:checked').each(function() {
+                    if ($(this).attr('data-correct') === 'true') {
+                        game.correct++;
+                    } else {
+                        game.incorrect++;
+                    }
+                });
             };
-
+            checkAnswer();
             var scoreArea = $('<div>');
             scoreArea.addClass('scoring');
             scoreArea.text("You guessed " + game.correct + " correct and " + game.incorrect + " wrong!");
             $('.wrapper').append(scoreArea)
             $('.finalgif').show();
-            checkAnswer();
+
 
             var refreshButton = $('<button>');
             refreshButton.addClass('refresh');
@@ -153,7 +152,7 @@ $(document).ready(function() {
 
         //game.start();
         timer = setInterval(game.clock, 1000)
-        $('.questionArea').prepend("Time remaining: <span id='counter'>90</span> Seconds");
+        $('.questionArea').prepend("Time remaining: <span id='counter'>150</span> Seconds");
         for (var i = 0; i < questions.length; i++) {
             var showQuestion = $('<div class="question">');
             var questionText = $('<div class="question-text">');
