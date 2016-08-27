@@ -6,7 +6,6 @@
     ~questions, questionsTotal, correctAnswer, incorrectAnswer, correct/incorrect counters
 -questions vs correctAnswer = win; correctAnswer < questions = loss
 -setTimer for page
-
 -create questionArray with all Questions
 -create answerArray with all Answers
 -create correctAnswerArray with the correct answers */
@@ -21,14 +20,14 @@ var game = {
 
         if (game.counter === 0) {
             alert("Game over!");
-            game.done();
+            // game.done();
         }
     },
     start: function() {
         game.start;
-    }
-
+    },
 }
+  
 
 
 var questionOne = {
@@ -111,11 +110,27 @@ $(document).ready(function() {
         $('.questionArea').removeClass('invisible');
 
         var submitButton = $('<button>');
-            submitButton.addClass('submit');
-            submitButton.text('Submit');
-            $('.wrapper').append(submitButton);
-            
-        game.start();
+        submitButton.addClass('submit');
+        submitButton.text('Submit');
+        $('.wrapper').append(submitButton);
+
+        $('.submit').on('click', function() {
+            $('.questionArea').remove();
+            submitButton.remove();
+            $('.music').remove();
+            $('#counter').remove();
+            clearInterval(timer);
+            $('.scoring').append('Correct Answers: ' +
+            + 'Incorrect answers: ');
+
+        var scoreArea = $('<div>');
+        scoreArea.addClass('scoring');
+        scoreArea.text("You guessed " + game.correct + "correct and " + game.incorrect + "wrong!");
+        $('.wrapper').append(scoreArea);
+        
+        });
+
+        //game.start();
         timer = setInterval(game.clock, 1000)
         $('.questionArea').prepend("Time remaining: <span id='counter'>90</span> Seconds");
         for (var i = 0; i < questions.length; i++) {
@@ -136,31 +151,19 @@ $(document).ready(function() {
 
             $('.questionArea').append(showQuestion);
 
-
-
         }
 
-
-        /*  result: function() {
-              clearInterval(timer);
-              $('.questionArea').remove();
-              $('.questionArea').html("Finished!")
-              $('.questionArea').append("Correct Answers: " + this.correct);
-              $('.questionArea').append("Incorrect Answers: " + this.incorrect);
-          }; */
-
     });
-
-
-
-
-
+    /*  result: function() {
+          clearInterval(timer);
+          $('.questionArea').remove();
+          $('.questionArea').html("Finished!")
+          $('.questionArea').append("Correct Answers: " + this.correct);
+          $('.questionArea').append("Incorrect Answers: " + this.incorrect);
+      }; */
     // <div class="question">
     //   <div class="question-text"></div>
     //   <div class="options"></div>
-
-
-
     /*  done: function() {
           $.each($'input[name="questionOne":checked');
           if ($(this).val()===questionOne.correctAnswer) {
@@ -168,7 +171,6 @@ $(document).ready(function() {
           } else {
               game.incorrect++;
           };
-
       }; */
 
     //  $('.questionArea').html(questionOne.question);

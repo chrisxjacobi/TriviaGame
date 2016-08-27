@@ -6,6 +6,12 @@
 
 }
 
+.submit, .startButton {
+	height: 60px;
+	width: 60px;
+	margin-left: 375px;
+}
+
 .first {
 	background-color: black;
 	font-size: 60px;
@@ -40,4 +46,16 @@ h1 {
 	font-family: 'IM Fell English SC', serif; 
 	text-align: center;
 	font-size: 60px;
+	padding-top: 10px;
+}
+
+.music {
+	display: none;
+}
+
+.scoring {
+	font-family: 'IM Fell English SC', serif;
+	font-size: 40px;
+	text-align: center;
+	padding-top: 50px;
 }
